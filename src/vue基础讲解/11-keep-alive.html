@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="../../node_modules/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../../node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+
+        var User1 = {
+            template: `
+                <div>
+                我是用户1
+                </div>
+            `
+        };
+        var User2 = {
+            template: `
+                <div>
+                    <h3 @click="clickUser2">我是用户2</h3>
+                </div>
+            `,
+            methods: {
+                clickUser2(e){
+                    e.target.style.color = 'red';
+                }
+            }
+        };
+
+        var router = new VueRouter({
+            routes: [
+                {
+                    path: '/user1',
+                    name: 'user1',
+                    component: User1
+                },
+                {
+                    path: '/user2',
+                    name: 'user2',
+                    component: User2
+                }
+            ]
+        });
+
+        // keep-alive 将组件状态及数据缓存，切换时不用重新加载dom
+        var App = {
+            template: `
+               <div>
+                    <router-link :to="{name: 'user1'}">User1</router-link>
+                    <router-link :to="{name: 'user2'}">User2</router-link>
+                    <keep-alive>
+                        <router-view>路由出口</router-view>
+                    </keep-alive>
+               </div>
+            `
+        };
+
+        new Vue({
+           el: '#app',
+           data(){
+               return {}
+           },
+            components: {
+                App
+            },
+            router,
+            template: `<App></App>`
+        });
+    </script>
+</body>
+</html>

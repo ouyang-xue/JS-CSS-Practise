@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 500px;
+            height: 500px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <button id="btn">按钮</button>
+    </div>
+    <script>
+        const box = document.getElementById('box');
+        const btn = document.getElementById('btn');
+
+        // addEventListener的第三个参数用于设置是否捕获，默认false；如果为true，则只捕获，取消冒泡的设置将无效
+        btn.addEventListener('click', function (evt) {
+            // 取消冒泡
+            if (evt && evt.stopPropagation()) { // W3C标准
+                evt.stopPropagation();
+            } else {
+                evt.cancelBubble = true;  // IE系列 IE678
+            }
+            alert('点击btn');
+        }, true);
+
+        box.addEventListener('click', function () {
+            alert('点击box');
+        }, true);
+
+        document.addEventListener('click', function () {
+            alert('点击document');
+        }, true);
+
+    </script>
+</body>
+</html>

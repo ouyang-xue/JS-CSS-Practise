@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function test() {
+            var n = 4399;
+            function add() {
+                n++;
+                console.log(n);
+            }
+            return {n:n, add:add};
+        }
+
+        var result = test();
+        var result1 = test();
+        result.add();       // 4400
+        result.add();       // 4401
+        console.log(result.n); // 4399
+        result1.add();      // 4400
+
+        function output(a) {
+            console.log(a);
+        }
+        output(typeof (function() {
+            output('Hello World!')
+        })());
+
+        console.log(Number());
+        console.log(Number(0));
+        console.log(Number(''));
+        console.log(Number('0'));
+        console.log(Number(false));
+        console.log(Number(null));
+        console.log(Number([]));
+        console.log(Number([0]));
+
+        var m= 1, j = k = 0;
+        function add(n) {
+            return n = n+1;
+        }
+        y = add(m);
+        console.log(y); // 4
+
+        function add(n) {  // 同名函数，后面的覆盖前面的，但不报错
+            return n = n + 3;
+        }
+        z = add(m);
+        console.log(z); // 4
+
+        // 对于正则表达式 /(l)\1/g，其中(l)是第一个分组，\1指向第一个分组，即\1重复了第一个分组的内容，
+        // 所以该正则表达式可以表示成/(ll)/g
+        // 而对于第二个参数$1，表示用第一个分组的内容 l 对匹配到的部分进行替换(即 ll 替换成 l )，
+        // 同时正则表达式有g表示全局匹配，所以4个ll被替换成2个ll。
+        var str = "Helllloooo world";
+        str = str.replace(/(l)\1/g, '$1');
+        console.log(str); // Hello world
+
+        var name="World!";
+        (function(){
+                var name;
+                if(typeof name === 'undefined'){
+                    name='Jack';
+                    console.log('Goodbye'+name);
+                } else {
+                    console.log('hello'+name);
+                }
+            }
+        )();
+
+        let [a,b, c,d, e] = "hello";
+        console.log(a);
+        console.log(e);
+
+        var f = v => v;
+    </script>
+</body>
+</html>

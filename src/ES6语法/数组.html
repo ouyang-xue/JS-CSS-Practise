@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组</title>
+</head>
+<body>
+    <script>
+        // 展开运算符，相当于把数组中的每个值都取出来放在这，其实编译成ES5的语法还是arr2的实现方式
+        let arr = [1, 2, 3];
+        let arr1 = [4, 5, 6];
+        let arr2 = [].concat(arr, arr1);
+        let arr3 = [...arr, ...arr1];
+        console.log(arr2);
+        console.log(arr3); // [1, 2, 3, 4, 5, 6]
+
+        // 对象解构，ES7才开始支持
+        let obj = {name: 'xz'};
+        let obj1 = {age: 29};
+        let obj2 = {...obj, ...obj1};
+        let obj5 = {};
+        Object.assign(obj5, obj, obj1);
+        console.log(obj5);
+        console.log(obj2);  // {name: "xz", age: 29}
+
+        // 实现对象深拷贝
+        function clone(obj) {
+            let newObj = {};
+            for (let key in obj) {
+                if (typeof obj[key] === 'object') {
+                    newObj[key] = clone(obj[key]);
+                } else {
+                    newObj[key] = obj[key];
+                }
+            }
+            return newObj;
+        }
+        let obj3 = {name: '小A', info: {home: 'hangzhou'}};
+        let obj4 = clone(obj3);
+        obj4.info.home = 'shannxi'
+        console.log(obj4);
+        console.log(obj3);
+
+        // 深拷贝
+        let obj6 = JSON.parse(JSON.stringify(obj3));
+
+        let arr6 = Array.of(3, 4, 5);
+        console.log(arr6);
+    </script>
+</body>
+</html>

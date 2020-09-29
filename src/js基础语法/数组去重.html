@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var arr = [1, 1, 4, 4, [2, 3], [2, 3], {a: 5}, {a: 5}, null, null, '', ''];
+        function uniq(arr) {
+            if (!arr) {
+                return;
+            }
+            var temp = [];
+            for(var i = 0; i < arr.length; i++) {
+                if (temp.indexOf(arr[i]) === -1) {
+                    temp.push(arr[i]);
+                }
+                // includes是ES6中的方法
+                /*if (!temp.includes(arr[i])) {
+                    temp.push(arr[i]);
+                }*/
+            }
+            return temp;
+        }
+        console.log(uniq(arr)); // 不能去除重复的对象和数组
+
+        //===========================================================
+        function toSet(arr) {
+            var newSet = new Set(arr);
+            return Array.from(newSet); // Array.from方法是将set数据结构转换为数组数据结构
+        }
+
+        console.log(toSet(arr)); // 不能去除重复的对象和数组
+
+        //===========================================================
+        function remove(arr) {
+            if (!arr) {
+                return;
+            }
+            var hash = [], temp = [];
+            arr.forEach((value, key) => {
+               if (!hash[value]) {
+                   temp.push(value);
+                   hash[value] = true;
+               }
+            });
+            return temp;
+        }
+
+        console.log(remove(arr)); // 可以去除重复的对象和数组
+
+        //数组去扁平化（数组的扁平化，就是将一个嵌套多层的数组array（嵌套可以是任何层数）转换为只有一层的数组）
+        function flatten(arr) {
+            // 第一种实现
+            var temp = [];
+            for (var val of arr) {
+                if (Array.isArray(val)) {
+                    temp = temp.concat(flatten(val));
+                } else {
+                    temp.push(val);
+                }
+            }
+            return temp;
+
+            /*  第二种实现
+                reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
+                语法：array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+                total	必需。初始值, 或者计算结束后的返回值。
+                currentValue	必需。当前元素
+            */
+            return arr.reduce(function(pre, item){
+                return pre.concat(Array.isArray(item) ? flatten(item) : item);
+            }, []);
+        }
+
+        var arr1 = [1, 4, [2, 3, [1, 2, [3, 6]]]];
+        console.log(flatten(arr1));
+        var arr2 = [1, 3, 433, 5, [5, 6], [1, 4, [4, 3]]];
+
+        // 由于max()里面参数不能为数组，所以借助apply(funtion,args)方法调用Math.max()，
+        // function为要调用的方法，args是数组对象，当function为null时，默认为上文,即相当于apply(Math.max,arr)
+        // call与apply只是传参方式不同
+        console.log(Math.max.apply(null, arr2)); // 433
+        console.log(Math.max.call(null, 1, 3, 43, 5)); // 43
+
+        // join() 方法用于把数组中的所有元素放入一个字符串, 元素是通过指定的分隔符进行分隔的
+        console.log(arr2.join(',')); // 1,3,433,5,5,6,1,4,4,3
+
+        // 实现sort
+        var arr3 = [23, 4, 32, 55];
+        var max = arr3.sort(function (x, y) {
+            // 返回值大于0时调换位置，小于0时位置不变
+            // return x - y; // 升序；
+            // return y - x; // 降序；
+            return x - y ? -1 : 1; // 降序；
+        });
+        console.log(max[0]); // 55
+
+    </script>
+</body>
+</html>

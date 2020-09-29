@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--(1) props $emit  解决父子组件之间通信问题，适用于层级较少的情况
+    (2) $attrs $listeners 解决组件嵌套多层时，相互间的通信问题
+    (3) 中央事件总线$bus new Vue()
+         $on和$emit 挂载同一个实例化对象，解决兄弟组件之间通信问题
+    (4) provide和inject-->
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="../../node_modules/vue/dist/vue.min.js"></script>
+    <script>
+        /**
+         * 父 ==> 子
+         * 1. 给父组件绑定自定义属性
+         * 2. 在子组件中通过props接受父组件传递的数据
+         * 3. 即可在子组件中使用
+         *
+         * 子 ==> 父
+         * 1. 在父组件中绑定自定义事件
+         * 2. 在子组件中触发原生事件，在函数中使用$emit触发自定义的事件
+         */
+
+        Vue.component('Child', {
+            template: `
+                <div>
+                    <p>Child {{parentToChild}}</p>
+                    <input type="text" v-model="parentToChild" @input="changeChild(parentToChild)">
+                    <p>{{$attrs.foo}}</p>
+                </div>
+            `,
+            inject: ['injectData'],
+            props: [ // 父组件向子组件传递数据通过props
+                'parentToChild'
+            ],
+            mounted() {
+                console.log(this.injectData);
+            },
+            methods: {
+                changeChild(val){  // 子组件向父组件传递数据通过事件
+                    // $emit(事件名，传递的参数)
+                    this.$emit('childToParent', val);
+                }
+            }
+        });
+        Vue.component('Parent', {
+            data(){
+              return {
+                  msg: 'I am parent component.',
+                  injectTest: 'I am from Inject'
+              }
+            },
+            provide() {
+                return {
+                    injectData: this.injectTest
+                }
+            },
+            template: `
+                <div>
+                    <p>Parent</p>
+                    <Child :parentToChild="msg" @childToParent="handleChildData" foo="foo"></Child>
+                </div>
+            `,
+            methods: {
+                handleChildData(val){
+                    console.log(val);
+                }
+            },
+            components: {
+            }
+        });
+        new Vue({
+           el: '#app',
+           data(){
+               return {}
+           },
+            components: {
+            },
+            template: `
+                <div>
+                    <Parent></Parent>
+                </div>
+            `
+        });
+    </script>
+</body>
+</html>

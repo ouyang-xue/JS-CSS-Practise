@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // 在实函数中的this
+        function sloppyMode() {
+            console.log(this); // window
+            console.log(this === window); // true
+        }
+        sloppyMode();
+
+        function strictMode() {
+            'use strict';
+            console.log(this); // undefined
+        }
+        strictMode();
+
+        function f3(arg1, arg2) {
+            console.log(this);
+        }
+        f3(1, 2); // window
+        f3.call('1', 2, 3);  // String {"1"}   // (this, arg1, arg2)
+        f3.apply(1, [2, 3]); // Number {1}  // (this, arrayWithArgs)
+
+        //  构造器中的this
+        var saveThis;
+        function Constructor() {
+            saveThis = this;
+        }
+        var con = new Constructor();
+        console.log(saveThis === con); // true
+
+        // 方法中的this
+        var obj = {
+            method: function () {
+                console.log(this === obj); // true
+            }
+        }
+        obj.method();
+    </script>
+</body>
+</html>

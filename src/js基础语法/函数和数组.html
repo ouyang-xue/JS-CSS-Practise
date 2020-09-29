@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script id="函数声明" type="text/html">
+        // 函数直接声明：会将函数的声明提前，所以该函数在其定义的前后都可以调
+        sum(1, 2);
+        function sum(a, b) { // 必须要有函数名
+            console.log(arguments.length);
+            console.log(sum.length);
+        }
+        sum(1, 2, 3, 4, 5);
+
+        // 函数表达式声明：会将变量名add的声明提前，但函数声明没有提前，所以这种定义方式只能在函数定义之后再去调用。
+        // add();
+        var add = function () { // 可以没有函数名
+            console.log(arguments[0]);
+        };
+        add(1);
+
+        // 匿名函数
+        document.onclick = function () {
+            alert(1);
+        };
+
+        setInterval(function () {
+            console.log('定时操作');
+        }, 1000);
+
+        (function (num1, num2) { // 闭包函数（立即执行函数）：不用调用即可执行
+            console.log(num1, num2);
+        })(100, 200);
+    </script>
+    <script type="text/html">
+        function Person(name, age) {
+            this.name = name;  // 不用提前声明，可以直接定义
+            this.age = age;
+        }
+        const p1 = new Person('AA', 20);
+        const p2 = new Person('BB', 30);
+        console.log(`${p1.name}---${p1.age}`);
+        console.log(`${p2.name}---${p2.age}`);
+    </script>
+    <script id="this" type="text/html">
+        // console.log(typeof NaN);
+        // console.log(typeof (typeof 1));
+        // 普通函数中的this指向全局对象window
+        let name = 'zs';
+        function f1() {
+            console.log(this);
+            console.log(this.name);
+        }
+        // f1();
+
+        // 如果函数作为一个对象的方法被调用，那么函数内部的this指向该对象
+        const obj = {
+            name: '111',
+            f2: function () {
+                console.log(this);
+                console.log(this.name);
+            }
+        };
+        // obj.f2();
+
+        // 构造函数中的this是一个隐式对象，类似一个初始化的模型，所有方法和属性都挂载在了这个隐式对象上，
+        // 后续通过new关键字来调用，从而实现实例化
+        function F3() {
+            this.name = 'f3';
+            console.log(this);
+        }
+        F3(); // 普通调用指向window
+        new F3(); // 构造函数调用指向该对象
+
+    </script>
+    <script id="inherit" type="text/html">
+        // 父类
+        function Person(name) {
+            this.name = name;
+            this.eyeColor = 'black';
+            this.tip = function () {
+                alert(this.name);
+            }
+        }
+        Person.prototype.age = 10; // 给构造函数添加原型属性
+
+        /** 1. 原型链继承
+            可继承的属性：实例的构造函数的属性，父类构造函数属性，父类原型的属性。（新实例不会继承父类实例的属性！）
+            缺点：a. 继承单一；
+                 b. 新实例无法向父类构造函数传递参数；
+                 c. 所有新实例都会共享父类实例的属性
+        */
+        function Per1() {
+            // this.name = 'per1';
+            this.eyeColor = 'black';
+        }
+        Per1.prototype = new Person('person'); // 让新实例的原型等于父类
+        const per1 = new Per1();
+        console.log(per1.name); // person
+        console.log(per1.eyeColor); // black
+        console.log(per1.age); // 10
+        console.log(per1 instanceof Person); // true
+
+        /** 2. 借用构造函数继承
+            call()、apply()、bind()都是用来重新定义this的指向对象
+            用.call()和.apply()将父类构造函数引入子类函数（在子类函数中做了父类函数的自执行）
+            特点：a. 只继承了父类构造函数的属性，没有继承原型上的属性；
+                 b. 解决了原型链继承的缺点；
+                 c. 可以继承多个构造函数属性（call多个）；
+                 d. 在子实例中可以向父实例传参；
+            缺点：a. 只能继承父类构造函数的属性
+                 b. 无法实现构造函数的复用。（每次用每次都要重新调用）
+                 c. 每个新实例都有父类构造函数的副本，臃肿。
+        */
+        function Per2() {
+            Person.call(this, 'per2');
+            this.age = 20;
+        }
+        const per2 = new Per2();
+        console.log(per2.name); // per2
+        console.log(per2.age); // 20
+        console.log(per2 instanceof Person); // false
+
+        /** 3. 组合继承（组合原型链继承和借用构造函数继承）（常用）
+            结合了两种模式的优点，传参和复用
+            特点：a. 可以继承父类原型链上的属性，可传参，可复用
+                 b. 每个新实例引入的构造函数属性是私有的
+            缺点：调用了两次父类构造函数（耗内存），子类的构造函数会代替原型上的那个父类构造函数。
+        */
+        function Per3(name) {
+            Person.call(this, name); // 借用构造函数继承
+        }
+        Per3.prototype = new Person(); // 原型链继承
+        const per3 = new Per3('per3');
+        console.log(per3.name); // per3
+        console.log(per3.age); // 10
+
+        /** 4. 原型式继承
+            用一个函数包装一个对象，然后返回该函数的调用。这个函数就变成了一个可以随意添加属性的实例或对象
+            缺点：a. 所有实例都会继承原型上的属性;
+                 b. 无法实现复用。（新实例属性都是后面添加的）
+        */
+        // 先封装一个函数容器，用来输出对象和承载继承的原型
+        function Per4(obj) {
+            function F() {}
+            F.prototype = obj; // 继承了传入的参数
+            return new F();
+        }
+        const person_4 = new Person();
+        const per4 = new Per4(person_4);
+        console.log(per4.name); // undefined
+        console.log(per4.age); // 10
+
+        /** 5. 寄生式继承
+            重点：就是给原型式继承外面套了个壳子。
+            优点：没有创建自定义类型，因为只是套了个壳子返回对象（这个），这个函数顺理成章就成了创建的新对象。
+            缺点：没用到原型，无法复用。
+        */
+        function Per4_5(obj) {
+            function F() {}
+            F.prototype = obj; // 继承了传入的参数
+            return new F();
+        }
+        const person_5 = new Person();
+        // 以上是原型式继承，给原型式继承再套个壳子传递参数
+        function Per5(obj) {
+            const temp = Per4_5(obj);
+            temp.name = 'per5';
+            return temp;
+        }
+        const per5 = Per5(person_5);
+        // 这个函数经过声明之后就成了可增添属性的对象
+        console.log(typeof Per5); // function
+        console.log(typeof per5); // object
+        console.log(per5.name); // per5
+
+        /** 6. 寄生组合式继承（常用）
+            修复了组合继承的问题
+            寄生：在函数内返回对象然后调用
+            组合：a. 函数的原型等于另一个实例;
+                 b. 在函数中用apply或者call引入另一个构造函数，可传参　
+        */
+        function Per4_6(obj) {
+            function F() {}
+            F.prototype = obj;
+            return new F();
+        }
+        // per4_6实例的原型继承了父类函数的原型
+        const per4_6 = new Per4_6(Person.prototype);
+        function Sub() {
+            Person.call(this);
+        }
+        Sub.prototype = per4_6; // 继承了per4_6实例
+        per4_6.constructor = Sub; // 修复实例
+        const sub = new Sub();
+        // sub的实例就继承了构造函数属性、父类实例、per4_6的函数属性
+        console.log(sub.age); // 10
+        console.log(sub.eyeColor); // black
+    </script>
+    <script>
+        console.log(Object.prototype.toString.call('')); // [object String]
+        console.log(Object.prototype.toString.call(1)); // [object Number]
+    </script>
+</body>
+</html>

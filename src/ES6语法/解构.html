@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解构</title>
+</head>
+<body>
+    <script>
+        let arr = [1, 2, 3];
+        let [a, b, c] = arr;
+        console.log(a);  // 1
+        console.log(b);  // 2
+        console.log(c);  // 3
+
+        // 解构赋值
+        let arr2 = [{name: 'ou', age: 20}, [11, 22], 33];
+        let [json, array, temp] = arr2;
+        console.log(json, array, temp); // {name: 'ou', age: 20}, [11, 22], 33
+        let [{name, age}, [aa, bb], cc] = arr2;
+        console.log(name + '-' + age + '-' + aa + '-' + bb + '-' + cc); // ou-20-11-22-33
+
+        // 默认解构：如果能取出来值，就用取出来的，如果取不出来就用默认值，如果没有默认值就是undefined
+        let arr3 = {name: 'wyb', age: 23};
+        let {name: myName, age: myAge, sex='female'} = arr3;
+        console.log(myName, myAge, sex);  // wyb, 23, undefined(female)
+
+        // 省略赋值
+        let arr4 = [1, 2, 3];
+        let [,,j] = arr4;
+        console.log(j); // 3
+
+    </script>
+</body>
+</html>

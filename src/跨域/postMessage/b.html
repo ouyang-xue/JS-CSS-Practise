@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>b.html</title>
+</head>
+<body>
+    <script>
+        window.onmessage = function (e) {
+            console.log(e.data);
+            e.source.postMessage('i love u too', e.origin);
+        }
+    </script>
+</body>
+</html>

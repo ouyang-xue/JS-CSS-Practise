@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // JavaScript中if语句求值其实使用eval函数，eval(function f(){}) 返回 function f(){} 也就是 true。
+        // eval该方法只接受原始字符串作为参数，如果 string 参数不是原始字符串，那么该方法将不作任何改变地返回。
+        // function f(){} 返回undefined
+        var y = 1;
+        if (function f() {}) {
+            y += typeof f;
+        }
+        // 以上代码相当于下面的
+        if (1) {
+            eval(function f() {});
+            y += typeof f;
+        }
+        console.log(y);  // 1undefined
+
+        function f1() {}
+
+        console.log(f1()); // undefined
+        console.log(typeof f1); // function
+
+        function mul(x) {
+            return function (y) {
+                return function (z) {
+                    return x * y * z;
+                }
+            }
+        }
+
+        console.log(mul(2)(3)(4));
+
+        var arr = [];
+        console.log(arr instanceof Array);
+        console.log(Array.isArray(arr));
+
+        // 这里的 emp1 通过 prototype 继承了 Employee的 company。emp1自己并没有company属性。所以delete操作符的作用是无效的
+        var Employee = {
+            company: 'xyz'
+        };
+        var emp1 = Object.create(Employee);
+        delete emp1.company;
+        console.log(emp1.company); // xyz
+
+        // 当我们使用 delete 操作符删除一个数组中的元素，这个元素的位置就会变成一个占位符。打印出来就是undefined x 1。
+        // 注意如果我们使用trees[3] === 'undefined × 1'返回的是 false。因为它仅仅是一种打印表示，并不是值变为undefined x 1。
+        var trees = ["redwood","bay","cedar","oak","maple"];
+        delete trees[3];
+        console.log(trees); // ["redwood", "bay", "cedar", empty, "maple"]
+        console.log(trees[3]); // undefined
+        console.log(trees.length); // 5    delete操作符并不影响数组的长度
+
+        /*加法操作表
+            Number + Number -> 加法
+            Boolean + Number -> 加法
+            Boolean + Boolean -> 加法
+            Number + String -> 连接
+            String + Boolean -> 连接
+            String + String -> 连接
+        */
+        var bar = true;
+        console.log(bar + 0);     // 1
+        console.log(bar + "xyz"); // truexyz
+        console.log(bar + true);  // 2
+        console.log(bar + false); // 1
+
+        var foo = function bar(){
+            // foo is visible here
+            // bar is visible here
+            console.log(typeof bar()); // Work here
+            return 12;
+        };
+        // foo is visible here
+        // bar is undefined here
+
+        // console.log(typeof bar()); // Uncaught TypeError: bar is not a function
+
+
+        // instanceof用于判断当前对象是否是特定类的对象
+        //instanceof运算符用来判断一个构造函数的prototype属性所指向的对象是否存在另外一个要检测对象的原型链上
+        function foo1(){
+            console.log('foo1=========' + foo1);
+            /*function foo1(){
+                console.log('foo1=========' + foo1);
+                return foo1;
+            }*/
+            return foo1;
+        }
+        console.log(new foo1() instanceof foo1);  // false
+        function foo2(){
+            console.log('foo2 this=========' + this); // [object Object]
+            return this;
+        }
+        console.log(new foo2() instanceof foo2);  // true
+
+        // 如果我们使用JavaScript的”关联数组”，我们怎么计算”关联数组”的长度？
+        var counterArray = {
+            A : 3,
+            B : 4
+        };
+        counterArray["C"] = 1;
+        console.log(Object.keys(counterArray).length); // 3
+    </script>
+</body>
+</html>

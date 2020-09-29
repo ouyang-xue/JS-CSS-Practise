@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    a和b同域 和c不同域
+    a先引用c，c将值放入window.name，然后把a引用的地址改到b，此时window.name的值还存在
+    <iframe src="http://localhost:4000/c1.html" frameborder="0" id="frame" onload="load()"></iframe>
+    <script>
+        let first = true;
+        function load() {
+            let cFrame = document.getElementById('frame');
+            if (first) {
+                cFrame.src = 'http://localhost:5000/b1.html';
+                first = false
+            } else {
+                console.log(cFrame.contentWindow.name);
+            }
+        }
+    </script>
+</body>
+</html>

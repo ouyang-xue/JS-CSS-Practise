@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #nationalDay {
+            width: 500px;
+            height: 500px;
+            background-color: red;
+            font-size: 50px;
+            color: red;
+            text-align: center;
+            vertical-align: center;
+        }
+
+        <!-- 行内标签可以设置宽高，但需要设置定位才可显示出来 -->
+        #span {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            position: absolute;
+        }
+        #div {
+            width: 100px;
+            height: 100px;
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <div id="nationalDay">
+        <span id="span"></span>
+        <div id="div"></div>
+    </div>
+    <script id="countDown" type="text/html">
+        window.onload = function () {
+            const futureTime = new Date('2020/10/01 00:00:00');
+            let currentTime;
+            setInterval(() => {
+                currentTime = new Date();
+                const div = document.getElementById('nationalDay');
+                const futureMSecs = futureTime.getTime();
+                const currentMSecs = currentTime.getTime();
+
+                const intervalMSecs = futureMSecs - currentMSecs;
+                const intervalSecs = parseInt(intervalMSecs / 1000);
+
+                const days = parseInt(intervalSecs / 3600 / 24);
+                const hours = parseInt(intervalSecs / 3600 % 24);
+                const minutes = parseInt(intervalSecs / 60 % 60);
+                const seconds = parseInt(intervalSecs % 60);
+
+                div.innerText = `距离国庆节还有: ${days}天 ${hours}小时 ${minutes}分 ${seconds}秒`;
+
+            }, 1000);
+        }
+    </script>
+    <script>
+        // 输出结果：c--1 a--undefined  b--NaN
+        const timer = setTimeout((timer) => {
+            console.log('a--' + timer); // a--undefined
+            timer += 2;
+            console.log('b--' + timer); // b--NaN
+        }, 0);
+        console.log('c--' + timer); // c--1 恒等于1
+
+        console.log([] ? !![] : ![]); // true
+    </script>
+</body>
+</html>

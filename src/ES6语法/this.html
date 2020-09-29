@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+       /* 事件调用
+       let box = document.getElementById('box');
+        box.onclick = move(); // this指向box
+
+        function move() {
+            console.log(this);
+        }
+
+        move(); // 直接调用，this指向window，严格模式下指向undefined
+        window.move();  // 严格模式下可以这样调用以使this指向window*/
+
+        // 函数内部
+        /*var obj = {
+            a: 10,
+            b: {
+                fn: function () {
+                    console.log(this);
+                }
+            }
+        };
+        window.obj.b.fn(); // 指向b
+        let func = obj.b.fn;
+        func();  // 指向window*/
+
+        // 构造函数
+        function Fn() {
+            this.num = 10;
+            return '';
+        }
+        var a = new Fn();
+        console.log(a.num); // 10
+
+       function Fn1() {
+           this.num = 10;
+           return {
+               num: 20
+           };
+       }
+       var a1 = new Fn1();
+       console.log(a1.num); // 20
+
+       function Fn2() {
+           this.num = 10;
+           return [];
+       }
+       var a2 = new Fn2();
+       console.log(a2.num); // undefined
+
+
+       function Fn3() {
+           this.num = 10;
+           return null;
+       }
+       var a3 = new Fn3();
+       console.log(a3.num); // 10
+
+
+       Fn.num = 20;
+        Fn.prototype.num = 30;
+        Fn.prototype.method = function () {
+            console.log(this.num);
+        };
+
+        var prototype = Fn.prototype;
+        var method = prototype.method;
+        new Fn().method(); // 10
+        prototype.method(); // 30
+        method(); // undefined
+
+        /*// prototype指向Fn.prototype，它是一个对象
+        prototype.num = 30;
+       prototype.method = function () {
+           console.log(this.num);
+       };
+       // 它的写法就相当于下面的写法，所以this指向的是Fn.prototype
+       var obj = {};
+       obj.num = 10;
+       obj.fn = function() {
+           console.log(this.num); // 10
+       }*/
+
+       function Foo() {
+           var i = 0;
+           return function() {
+               console.log(i++);
+           }
+       }
+
+       var f1 = Foo(),
+           f2 = Foo();
+       f1();
+       f1();
+       f2();
+    </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c61b0fee-3ebf-4a5e-950f-020d9e8a2773" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="TypeScript File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1evq0EKfl41rVYQ8xjz3Hp5w9e0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mercury-client-new-ui" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\WorkSpaces\WebStorm\vue\src\HTML练习" />
+      <recent name="C:\WorkSpaces\WebStorm\vue\src\vue基础讲解" />
+      <recent name="C:\WorkSpaces\WebStorm\vue" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\WorkSpaces\WebStorm\vue\src\HTML练习" />
+      <recent name="C:\WorkSpaces\WebStorm\vue\src\跨域\CORS" />
+      <recent name="C:\WorkSpaces\WebStorm\vue\src\跨域\window.name" />
+      <recent name="C:\WorkSpaces\WebStorm\vue\src\跨域\postMessage" />
+      <recent name="C:\WorkSpaces\WebStorm\vue" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.冒泡算法.js">
+    <configuration name="实现一个基本的Event Bus.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/JS手写代码题/实现一个基本的Event Bus.js" working-dir="$PROJECT_DIR$/src/JS手写代码题">
+      <method v="2" />
+    </configuration>
+    <configuration name="手动实现Promise.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/JS手写代码题/手动实现Promise.js" working-dir="$PROJECT_DIR$/src/JS手写代码题">
+      <method v="2" />
+    </configuration>
+    <configuration name="冒泡算法.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/JS手写代码题/冒泡算法.js" working-dir="$PROJECT_DIR$/src/JS手写代码题">
+      <method v="2" />
+    </configuration>
+    <configuration name="选择排序.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/JS手写代码题/选择排序.js" working-dir="$PROJECT_DIR$/src/JS手写代码题">
+      <method v="2" />
+    </configuration>
+    <configuration name="手动实现new方法.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/JS手写代码题/手动实现new方法.js" working-dir="$PROJECT_DIR$/src/JS手写代码题">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.冒泡算法.js" />
+        <item itemvalue="Node.js.实现一个基本的Event Bus.js" />
+        <item itemvalue="Node.js.手动实现Promise.js" />
+        <item itemvalue="Node.js.手动实现new方法.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c61b0fee-3ebf-4a5e-950f-020d9e8a2773" name="Default Changelist" comment="" />
+      <created>1595212188325</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595212188325</updated>
+      <workItem from="1595212190121" duration="37220000" />
+      <workItem from="1595831223855" duration="21060000" />
+      <workItem from="1596417519306" duration="47931000" />
+      <workItem from="1597023024670" duration="120128000" />
+      <workItem from="1598838209743" duration="639000" />
+      <workItem from="1598844136976" duration="18993000" />
+      <workItem from="1599446266263" duration="22717000" />
+      <workItem from="1600046229999" duration="19021000" />
+      <workItem from="1600651570340" duration="11290000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="450" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595494607972">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="450" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.860@0.0.1440.860" timestamp="1595494607972" />
+    <state x="500" y="187" key="FileChooserDialogImpl" timestamp="1600656729964">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="500" y="187" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1600656729964" />
+    <state width="1419" height="276" key="GridCell.Tab.0.bottom" timestamp="1601027802509">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1601027802509" />
+    <state width="1419" height="276" key="GridCell.Tab.0.center" timestamp="1601027802509">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1601027802509" />
+    <state width="1419" height="276" key="GridCell.Tab.0.left" timestamp="1601027802509">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1601027802509" />
+    <state width="1419" height="276" key="GridCell.Tab.0.right" timestamp="1601027802509">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1601027802509" />
+    <state width="1419" height="276" key="GridCell.Tab.1.bottom" timestamp="1601027802510">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.1.bottom/0.0.1440.860@0.0.1440.860" timestamp="1601027802510" />
+    <state width="1419" height="276" key="GridCell.Tab.1.center" timestamp="1601027802510">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.1.center/0.0.1440.860@0.0.1440.860" timestamp="1601027802510" />
+    <state width="1419" height="276" key="GridCell.Tab.1.left" timestamp="1601027802509">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.1.left/0.0.1440.860@0.0.1440.860" timestamp="1601027802509" />
+    <state width="1419" height="276" key="GridCell.Tab.1.right" timestamp="1601027802510">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.1.right/0.0.1440.860@0.0.1440.860" timestamp="1601027802510" />
+    <state width="1419" height="276" key="GridCell.Tab.2.bottom" timestamp="1601027802510">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.2.bottom/0.0.1440.860@0.0.1440.860" timestamp="1601027802510" />
+    <state width="1419" height="276" key="GridCell.Tab.2.center" timestamp="1601027802510">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.2.center/0.0.1440.860@0.0.1440.860" timestamp="1601027802510" />
+    <state width="1419" height="276" key="GridCell.Tab.2.left" timestamp="1601027802510">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.2.left/0.0.1440.860@0.0.1440.860" timestamp="1601027802510" />
+    <state width="1419" height="276" key="GridCell.Tab.2.right" timestamp="1601027802510">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.2.right/0.0.1440.860@0.0.1440.860" timestamp="1601027802510" />
+    <state width="1419" height="276" key="GridCell.Tab.3.bottom" timestamp="1601027802511">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.3.bottom/0.0.1440.860@0.0.1440.860" timestamp="1601027802511" />
+    <state width="1419" height="276" key="GridCell.Tab.3.center" timestamp="1601027802510">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.3.center/0.0.1440.860@0.0.1440.860" timestamp="1601027802510" />
+    <state width="1419" height="276" key="GridCell.Tab.3.left" timestamp="1601027802510">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.3.left/0.0.1440.860@0.0.1440.860" timestamp="1601027802510" />
+    <state width="1419" height="276" key="GridCell.Tab.3.right" timestamp="1601027802510">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.3.right/0.0.1440.860@0.0.1440.860" timestamp="1601027802510" />
+    <state x="223" y="74" key="SettingsEditor" timestamp="1597801414258">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="223" y="74" key="SettingsEditor/0.0.1440.860@0.0.1440.860" timestamp="1597801414258" />
+    <state width="504" height="446" key="SwitcherDM" timestamp="1598852651364">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="504" height="446" key="SwitcherDM/0.0.1440.860@0.0.1440.860" timestamp="1598852651364" />
+    <state x="407" y="190" width="626" height="480" key="find.popup" timestamp="1597652373814">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="407" y="190" width="626" height="480" key="find.popup/0.0.1440.860@0.0.1440.860" timestamp="1597652373814" />
+    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1600669734987">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1440.860@0.0.1440.860" timestamp="1600669734987" />
+  </component>
+</project>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .default {
+            display: block;
+            width: 80px;
+            height: 40px;
+            color: #fff;
+            border: solid darkgray 1px;
+        }
+        .success {
+            background-color: limegreen;
+        }
+        .warning {
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="../node_modules/vue/dist/vue.min.js"></script>
+    <script type="text/javascript">
+        // 全局组件
+        Vue.component('vBtn', {
+            template: `
+        // 插槽 内置组件slot作为承载分发内容的出口
+                <button class="default" :class="type">
+                    <slot>
+                    按钮
+                    </slot>
+                </button>
+            `,
+            props: [
+                'type'
+            ]
+        });
+        var vHeader = {
+            template: `
+                <div>头部
+                    <vBtn type="success"></vBtn>
+                    <vBtn type="warning"></vBtn>
+                </div>
+            `
+        };
+        var vAside = {
+            template: `
+                <div>侧边栏<vBtn type="warning"></vBtn></div>
+            `
+        };
+        var vContent = {
+            template: `
+                <div>内容<vBtn></vBtn></div>
+            `
+        };
+        var App = {
+            template: `
+                <div>
+                    <vHeader></vHeader>
+                    <div>
+                        <vAside></vAside>
+                        <vContent></vContent>
+                    </div>
+                </div>
+            `,
+            components: {
+                vHeader,
+                vAside,
+                vContent
+            }
+        };
+        new Vue({
+            el: '#app',
+            data() {
+                return {}
+            },
+            components: {
+                App
+            },
+            template: '<App/>'
+        });
+    </script>
+</body>
+</html>

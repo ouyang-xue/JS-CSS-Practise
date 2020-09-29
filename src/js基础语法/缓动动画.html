@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">匀速运动</button>
+    <button id="btn1">向前变速运动</button>
+    <button id="btn2">向后变速运动</button>
+    <button id="btn3">改变颜色</button>
+    <div id="box"></div>
+    <script>
+
+        window.addEventListener('load', function () {
+            const btn = document.getElementById('btn');
+            const btn1 = document.getElementById('btn1');
+            const btn2 = document.getElementById('btn2');
+            const box = document.getElementById('box');
+            let timer;
+
+            // 匀速运动
+            btn.addEventListener('click', function () {
+                clearInterval(timer);
+                let begin = 0;
+                const end = 500, speed = 50;
+                timer = setInterval(function() {
+                    begin += speed;
+                    box.style.left = begin + 'px';
+                    box.innerText = begin;
+                    if (begin === end) {
+                        clearInterval(timer);
+                    }
+                }, 20);
+            });
+
+            // 向前变速运动
+            btn1.addEventListener('click', function () {
+                exercise(500);
+            });
+
+            // 向后变速运动
+            btn2.addEventListener('click', function () {
+                exercise(10);
+            });
+
+            function exercise(end) {
+                clearInterval(timer);
+                let speed = 0;
+
+                timer = setInterval(function () {
+                    speed = (end - box.offsetLeft) * 0.2;
+                    speed = (end > box.offsetLeft) ? Math.ceil(speed) : Math.floor(speed);
+                    box.style.left = box.offsetLeft + speed + 'px';
+                    box.innerText = box.offsetLeft;
+
+                    if (end === box.offsetLeft) {
+                        clearInterval(timer);
+                        // 如果要执行多个动画，可以在清除定时器之后执行下一个动画操作
+                    }
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>

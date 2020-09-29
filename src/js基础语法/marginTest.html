@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #main {
+            width: 300px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .box {
+            float: left;
+            background-color: aquamarine;
+            width: 100px;
+            height: 100px;
+            margin: 10px 0 0 10px;
+        }
+
+        ul {
+            width: 300px;
+            height: 50px;
+            background-color: aquamarine;
+            /*空格本质上是一个字符，所以可以设置字符大小为0，或者通过设置字符之间的间距清除li之间的空隙*/
+            /*font-size: 0;  */
+            /*letter-spacing: -4px;*/
+        }
+
+        li {
+            width: 50px;
+            height: 50px;
+            background-color: bisque;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    li如果换行书写，之间会有一个字符的空格
+    <div id="ui-li">
+        <ul>
+            <li></li><li></li>
+            <li></li><li></li>
+        </ul>
+    </div>
+    <script id="test1" type="text/html">
+        // 在js中，0==false，1==true
+        // console.log(1 < 2 < 3); // true
+        // console.log(true < 3); // true
+        // console.log(3 > 2 > 1); // false
+        // console.log(false > -1); // false
+
+        //====================================================
+        const a = [];
+        for (var i = 0; i < 10; i++) {
+            a.push(function () {
+                return console.log(i);
+            });
+        }
+        a[0](); // let i -- 0  // var i -- 10
+        a[1](); // let i -- 1  // var i -- 10
+        //====================================================
+        let m = true;
+        setTimeout(function () {
+            m = false;
+        }, 3000);
+        // while(m) {} 这里会发生死循环
+        // alert('OK');
+        //====================================================
+        (function(x){
+            return (function (y) {
+                // console.log(x); // 1
+            })(2)
+         }
+        )(1)
+        //====================================================
+        var x = 21;
+        const girl = function () {
+            console.log(x);  // undefined  如果用let定义变量，这里会直接报错
+            var x = 20;
+        };
+        girl();
+        //====================================================
+        var y = 1;
+        if (function f() {}) {
+            y += typeof f;
+        }
+        console.log('y===' + y); // y===1undefined
+
+    </script>
+    <script>
+        //====================================================
+        const aa = [1, 2, 3];
+        const bb = [1, 2, 3];
+        const cc = '1, 2, 3';
+        console.log('aa == cc:', aa == cc); // false
+        console.log('aa == bb:',  aa == bb); // false
+    </script>
+</body>
+</html>

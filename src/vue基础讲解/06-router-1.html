@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Router</title>
+</head>
+<body>
+    <a href="#/login">登录</a>
+    <a href="#/register">注册</a>
+    <div id="app"></div>
+    <script type="text/javascript">
+        var oDiv = document.getElementById('app');
+        window.onhashchange = function () {
+            console.log(location.hash);
+            switch (location.hash) {
+                case '#/login':
+                    oDiv.innerHTML = '<h2>登录成功</h2>';
+                    break;
+                case '#/register':
+                    oDiv.innerHTML = '<h2>注册成功</h2>';
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

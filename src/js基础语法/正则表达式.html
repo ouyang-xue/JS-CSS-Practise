@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var str = 'daad, 434555 da123;43 ppps45 AS23s234';
+        var reg = /\d+/g;
+        var arr = [];
+        var result = reg.exec(str);
+        while (result) {
+            arr.push(result[0]);
+            result = reg.exec(str);
+        }
+        console.log(str.match(reg));
+        console.log(reg.exec(str));
+        console.log(arr); // [0: "434555", 1: "123", 2: "43", 3: "45", 4: "23", 5: "234"]
+
+        var aa;
+        console.log(aa); // undefined
+        console.log(aa + 1); // NaN
+        console.log(aa + '123'); // undefined123
+        // console.log(bb);  // Uncaught ReferenceError: bb is not defined
+
+        // let [a,b,c] = [1,2,3];
+        var [a,b,c] = [1,2,3];
+        console.log('b==' + b);
+        let d = [4, 5, 6];
+        let e = [...d];
+        console.log(e);
+    </script>
+</body>
+</html>

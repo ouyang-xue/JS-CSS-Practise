@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+    <script>
+        // 直接在传参时赋默认值，当该参数存在时使用传入的值，不存在时就使用默认值
+        // 省略了对参数是否存在的判断及设置默认值的操作
+        function f(url='/user', method='GET', dataType='json') {
+            console.log(url);
+            console.log(method);
+            console.log(dataType);
+        }
+
+        // f函数编译成ES5的代码如下
+        function f1() {
+            var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/user';
+            var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GET';
+            var dataType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'json';
+        }
+
+        f('http://www.baidu.com', 'POST');
+
+        let arr = [1, 2, 3];
+        let result = arr.reduce(function (previousValue, currentValue, currentIndex, array) {
+            // 上一次的计算结果会赋给这一次的previousValue
+            return previousValue - currentValue;
+        }, 10); // 第二个参数为默认初始值，如果不设，则第一次执行时，previousValue=第一个元素，currentValue=第二个元素
+        console.log(result); // 4
+
+        // 箭头函数
+        let obj = {
+            name: 'aaa',
+            getName: () => {
+                // 因为这里的this指的是外层函数，而getName的外层是obj，不是一个函数且没有形成封闭作用域
+                // 所以这里的this指向window
+                return 'getName==' + this.name;
+            },
+            getName2: function () {
+                // 这里的this指向调用getName2的对象obj
+                return 'getName2==' + this.name;
+            }
+        };
+        console.log(obj.getName()); // getName==
+        console.log(obj.getName2()); // getName2==aaa
+
+        // let obj1 = {
+        //     name: 'bbb',
+        //     gN: obj.getName()
+        // };
+        // console.log(obj1.gN); // undefined
+
+        const obj = {
+            radius: 10,
+            diameter() {
+                return this.radius * 2
+            },
+            perimeter: () => 2 * Math.PI * this.radius
+        };
+        console.log(obj.diameter())    // 20
+        console.log(obj.perimeter())    // NaN
+
+
+
+
+    </script>
+</body>
+</html>

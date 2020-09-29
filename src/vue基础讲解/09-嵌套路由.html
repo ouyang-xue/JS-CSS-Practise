@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="../../node_modules/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../../node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        // 创建router对象
+        var UserQuery = {
+            template: `
+                <div>
+                我是用户2
+                <br/>
+                <router-link to="/user/user1">User1</router-link>
+                <router-link to="/user/user2">User2</router-link>
+                <router-view></router-view>
+                </div>
+            `
+        };
+        var User1 = {
+            template: `
+            <div>用户2下的user1</div>
+          `
+        };
+        var User2 = {
+            template: `
+            <div>用户2下的user2</div>
+          `
+        };
+
+        var router = new VueRouter({
+            routes: [
+                {
+                    path: '/user',
+                    name: 'userQ',
+                    component: UserQuery,
+                    children: [
+                        {
+                            path: 'user1',
+                            component: User1
+                        },
+                        {
+                            path: 'user2',
+                            component: User2
+                        }
+                    ]
+                }
+            ]
+        });
+
+        var App = {
+            template: `
+               <div>
+                    <router-link :to="{name: 'userQ'}">用户2</router-link>
+                    <router-view>路由出口</router-view>
+               </div>
+            `
+        };
+
+        new Vue({
+           el: '#app',
+           data(){
+               return {}
+           },
+            components: {
+                App
+            },
+            router,
+            template: `<App></App>`
+        });
+    </script>
+</body>
+</html>

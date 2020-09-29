@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="../../node_modules/vue/dist/vue.min.js"></script>
+    <script type="text/javascript">
+        new Vue({
+           el: '#app',
+           data(){
+               return {
+                   msg: '111',
+                   infos: [
+                       {name: 'xz', age: 29}
+                   ]
+               }
+           },
+            template: `
+                <div>
+                    <input type="text" v-model="msg">
+                    <button @click="infos[0].name='wyb'">change</button>
+                    <h3>{{infos[0].name}}</h3>
+                </div>
+            `,
+            watch: {
+               msg: function (newVal, oldVal) {
+                   console.log(newVal, oldVal);
+               },
+                infos: {
+                   deep: true,
+                    handler: function (newV, oldV) {
+                        console.log(newV[0].name);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

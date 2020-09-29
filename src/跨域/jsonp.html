@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function show(data) {
+            console.log(data);
+        }
+        // show({"q":"angular","p":false,"g":[{"type":"sug","sa":"s_1","q":"angularjs"}]});
+        // https://www.baidu.com/s?wd=Angular&cb=show
+        function jsonp({url, params, cb}) {
+            return new Promise((resolve, reject) => {
+                let script = document.createElement('script');
+                window[cb] = function (data) {
+                    resolve(data);
+                    document.body.removeChild(script);
+                };
+                params = {...params, cb};
+                let arr = [];
+                for (let key in params) {
+                    arr.push(`${key}=${params[key]}`);
+                }
+                script.src = `${url}?${arr.join('&')}`;
+                script.type = 'text/javascript';
+                document.body.appendChild(script);
+            });
+        }
+
+        console.log(jsonp({
+            url: 'https://www.baidu.com/s',
+            params: {wb: 'Angular'},
+            cb: 'show'
+        }));/*.then(data => {
+            console.log('data');
+        });*/
+    </script>
+</body>
+</html>

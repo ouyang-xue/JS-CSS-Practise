@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span id="first">第一个元素</span>
+        <button class="btn">按钮</button>
+        <p>
+            <a href="#">链接</a>
+        </p>
+        <div>最后一个元素</div>
+    </div>
+    <script type="text/html">
+        const str = 'window str';
+        console.log(window.str); // undefined
+        console.log(this.str); // undefined
+
+        console.log(document === window.document); // true
+
+        console.log(document); // 输出整个html文档的内容
+        console.log(document.childNodes);
+        console.log(document.head);
+        console.log(document.body);
+        document.title = 'test document';
+        console.log(document.title);
+    </script>
+
+    <script type="text/html">
+        const rootEle = document.getElementById('box');
+        const btn = document.getElementsByClassName('btn')[0];
+        console.log(btn);
+        // 获取前一个兄弟元素
+        const previous = btn.previousElementSibling || btn.previousSibling;
+        console.log(previous);
+        // 获取下一个兄弟元素
+        const next = btn.nextElementSibling || btn.nextSibling;
+        console.log(next);
+        const aLabel = document.getElementsByTagName('a')[0];
+        console.log(aLabel);
+        // 获取该元素的父元素
+        console.log(aLabel.parentNode);
+        // 获取第一个元素
+        console.log(rootEle.firstElementChild || box.firstChild);
+        // 获取最后一个元素
+        console.log(rootEle.lastElementChild || box.lastChild);
+        // 获取所有的节点
+        console.log(rootEle.childNodes); // 输出所有的节点内容，包括换行
+        console.log(rootEle.children);
+    </script>
+
+</body>
+</html>

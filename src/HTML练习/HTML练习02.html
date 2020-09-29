@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    响应式布局-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: 'monospace';
+        }
+        #text {
+            border: 1px solid royalblue;
+            width: 100px;
+            height: 200px;
+            overflow-wrap: break-word;
+            word-break: break-all;
+            white-space: nowrap;
+        }
+
+        #content {
+            margin: auto;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        #float {
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            float: left;
+        }
+
+        #clip-path {
+            height: 200px;
+            width: 200px;
+            background-image: url("../image/222.jpg");
+            /*clip-path 截取各种形状*/
+            /*clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); !*自定义规则或不规则图形*!*/
+            clip-path: circle(50px at 100px 100px); /*画圆*/
+            /*clip-path: url(#clipPath); !*通过svg设置图形进行裁剪*!*/
+            /*transition 第一个参数为要添加动画的属性名*/
+            transition: clip-path .4s;
+        }
+        #clip-path:hover {
+            clip-path: circle(80px at 100px 100px);
+        }
+
+        #transform-container {
+            height: 200px;
+            width: 200px;
+            border: 1px solid;
+            padding: 5px;
+            position: relative;
+            perspective: 500px;
+            box-shadow: 100px 10px red;
+            margin: 50px auto;
+        }
+        #transform {
+            height: 200px;
+            width: 200px;
+            transform-style: preserve-3d;
+        }
+
+        #transform div {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            line-height: 200px;
+            font-size: 50px;
+            text-align: center;
+        }
+
+        #front {
+            background-color: bisque;
+            /*transform: translateX(50px) translateY(50px) rotate(90deg);*/
+            transform: translateZ(-100px);
+        }
+
+        #timing {
+            margin-left: 50px;
+            width: 30px;
+            height: 30px;
+            background-color: royalblue;
+            transition: width 1s, background-color 2s;
+            /*用于设置各种动画效果*/
+            transition-timing-function: cubic-bezier(0.456, -0.46, 0.55, 1.4);
+        }
+        #timing:hover {
+            width: 280px;
+            background-color: chartreuse;
+        }
+
+        #animation {
+            width: 50px;
+            height: 50px;
+            background-color: royalblue;
+            position:relative;
+            animation: mymove 5s infinite;
+            animation-timing-function: steps(1);
+        }
+        @keyframes mymove {
+            0%   {left: 0;}
+            25%  {left: 200px;}
+            75%  {left: 50px}
+            100% {left: 100px;}
+        }
+    </style>
+</head>
+<body>
+    <div id="text">
+        this is a long sentence abcdefghijklmnopqrstuvwxyz. 一二三四五六七八九十。这个句子特别特别特别特别特别特别特别长。
+    </div>
+
+    <div id="content">
+        <span id="float">float</span>
+        <div>
+            4.1.    Test Deviation
+            N/A
+            4.2.    Defects and System Limitation
+            The related function of test plan is based on the above test points, for other abnormalities test points can't cover, may result in some cases test plan is not involved.
+        </div>
+    </div>
+
+    <div id="clip-path"></div>
+    <!--<svg>
+        <defs>
+            <clipPath id="clipPath">
+            &lt;!&ndash;<circle cx="60" cy="50" r="30" fill="red"/>&ndash;&gt;
+                <polygon stroke="#aabbcc" points="20 0 60 60 0 100"/>
+            </clipPath>
+        </defs>
+    </svg>-->
+
+    <div id="transform-container">
+        <div id="transform">
+            <div id="front">1</div>
+        </div>
+    </div>
+
+    <div id="timing"></div>
+    <div id="animation"></div>
+</body>
+</html>

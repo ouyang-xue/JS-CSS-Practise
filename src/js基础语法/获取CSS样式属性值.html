@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">获取属性</button>
+    <div id="box"></div>
+    <script>
+        window.addEventListener('load', function () {
+            const btn = document.getElementById('btn');
+            btn.addEventListener('click', function () {
+                changeCssStyle(box, 'backgroundColor', 'green');
+                console.log(box.style.width); // 这样只能拿到在行内定义的样式值，拿不到页内或外部设置的值
+                console.log(getCssStyle(box, 'width'));
+            });
+
+            function changeCssStyle(box, attr, value) {
+                // 通过方法传递改变样式属性时，不能直接用点语法(box.style.attr)，而要用下标语法
+                box.style[attr] = value;
+                console.log(box.style[attr]);
+            }
+
+            function getCssStyle(obj, attr) {
+                if (obj.currentStyle) {
+                    return obj.currentStyle[attr]; // IE和opera
+                } else {
+                    return window.getComputedStyle(obj)[attr]; // 新版浏览器
+                }
+            }
+        })
+    </script>
+</body>
+</html>

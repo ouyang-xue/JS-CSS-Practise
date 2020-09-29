@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="test">
+        <p>这是innerHTML</p>
+    </div>
+    <div>
+        <p>这是innerHTML--2</p>
+    </div>
+    <script>
+        // 1000000000
+        console.log(Math.floor(Math.random() * (9999999999 - 1000000000)));
+
+        var str = 'abc';
+        // console.log(str.repeat(3));
+        // 定义自己的方法之前，检测该方法是否已经存在
+        String.prototype.repeatify = String.prototype.repeatify || function (count) {
+            var s = '';
+            for (var i = 0; i < count; i++) {
+                s += this;
+            }
+            return s;
+        };
+        console.log(str.repeatify(3));
+
+        var test = document.getElementById('test');
+        // console.log(test.innerHTML);
+        // console.log(test.outerHTML); // 获取的是整个id=test的元素本身
+        // test.innerHTML = '<span>换个标签</span>';
+        // console.log(test.innerHTML);
+        test.outerHTML = '<span>这是outerHTML</span>';
+        console.log(test.outerHTML);
+    </script>
+</body>
+</html>

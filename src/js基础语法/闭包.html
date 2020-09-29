@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    初始内容
+    <button onclick="fun()">按鈕</button>
+    <button id="btn">按鈕2</button>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        function fun() {
+            document.write("write内容");
+        }
+
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click', function () {
+            btn.innerHTML = '<a href="javascript:void(0)">新的链接</a>';
+        });
+    </script>
+
+    <script id="闭包" type="text/html">
+        function say667() {
+            // Local variable that ends up within closure
+            var num = 666;
+            var sayAlert = function() {
+                alert(num);
+            };
+            num++;
+            return sayAlert;
+        }
+        var sayAlert = say667();
+        sayAlert(); // 667
+
+        var temp = (123456789).toLocaleString('zh-hans-CN-u-nu-hanidec', {useGrouping: true});
+        console.log(temp); // false: 一二三四五六七八九    true: 一二三,四五六,七八九
+    </script>
+
+    <script type="text/html">
+
+        var lis = document.getElementsByTagName("li");
+        for(var i=0;i<lis.length;i++){
+            (function(i){
+                lis[i].onclick = function(){
+                    console.log(i);
+                };
+            })(i);       //事件处理函数中闭包的写法
+        }
+
+        var  fn=(function(){
+            var  i=10;
+            function  fn(){
+                console.log(++i);
+            }
+            return   fn;
+        })();
+        fn();   //11
+        fn();   //12
+
+        var add = function(x) {
+            var sum = 11;
+            var tmp = function(x) {
+                sum = sum + x;
+                return tmp;
+            };
+            tmp.toString = function() {
+                return sum;
+            };
+            return tmp;
+        };
+        console.log(add(1)(2)(3)); // 16
+
+        function fun(n,o) {
+            console.log(o);
+            return {
+                fun:function(m) {
+                    return fun(m,n);
+                }
+            };
+        }
+        var a = fun(0);  //undefined
+        a.fun(1);  //0
+        a.fun(2);  //0
+        a.fun(3);  //0
+        var b = fun(0).fun(1).fun(2).fun(3);   //undefined  0  1  2
+        var c = fun(0).fun(1);
+        c.fun(2);
+        c.fun(3);  //undefined  0  1  1
+
+    </script>
+
+    <script>
+        function fn(){
+            var arr = [];
+            for(var i = 0;i < 5;i ++){
+                arr[i] = function(){
+                    return i;
+                }
+            }
+            return arr;
+        }
+        var list = fn();
+        for(var i = 0,len = list.length;i < len ; i ++){
+            console.log(list[i]());
+        }  //5 5 5 5 5
+
+        function fun1() {
+            var arr1 = [];
+            for (var i=0; i<5; i++) {
+                arr1[i] = (function (i) {
+                    return function () {
+                        return i;
+                    };
+                })(i);
+            }
+            return arr1;
+        }
+        var list1 = fun1();
+        for (var j=0, len1=list1.length; j<len1; j++) {
+            console.log(list1[j]());
+        }
+    </script>
+</body>
+</html>

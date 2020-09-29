@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /*typeof运算符的返回类型为字符串，值包括如下几种：
+        1. 'undefined'  --未定义的变量或值
+        2. 'boolean'    --布尔类型的变量或值
+        3. 'string'     --字符串类型的变量或值
+        4. 'number'     --数字类型的变量或值
+        5. 'object'      --对象类型的变量或值，或者null(这个是js历史遗留问题，将null作为object类型处理)
+        6. 'function'   --函数类型的变量或值*/
+
+        // var a = [1, 2, 3];
+        // console.log(typeof {} === 'object');  // true
+        // console.log(typeof new Array() === 'object');  // true
+        // console.log(typeof a === 'object');  // true
+        // console.log(typeof [] === 'object');  // true
+        // console.log([5, 9, 1] === [5, 9, 1]); // false
+        // console.log([1, 9, 3] === [3, 9, 1]); // false
+        // console.log({} === {}); // false
+        // console.log({a:1} === {a:1}); // false
+
+        function Person() {
+
+        }
+
+        var p1 = new Person();
+        var p2 = new Person();
+        // console.log(p1 == p2); // false
+        
+        function isObjEqual(o1, o2) {
+            var props1 = Object.getOwnPropertyNames(o1);  // 返回值是string[]
+            var props2 = Object.getOwnPropertyNames(o2);
+            if (props1.length !== props2.length) {
+                return false;
+            }
+            for (var i = 0; i < props1.length; i++) {
+                var propName = props1[i];
+                if (o1[propName] !== o2[propName]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        var obj1 = {id: 1, name: 'zhangsan'};
+        var obj2 = {id: 2, name: 'lisi'};
+        var obj3 = {name: 'zhangsan', id: 1};
+        var obj4 = {id: 2, name: 'lisi', age: 20};
+        // console.log(isObjEqual(obj1, obj2));   // false
+        // console.log(isObjEqual(obj1, obj3));   // true
+        // console.log(isObjEqual(obj2, obj4));   // false
+
+        // console.log(100.1 + 9.8); // 109.89999999999999
+        // console.log((100.1 * 100 + 9.8 * 100) / 100); // 109.9
+        // console.log(100 * 9.8);  // 980.0000000000001
+        // console.log((100 * 10 * 9.8 * 10) / 100); // 980
+
+        console.log(parseInt(100 * 9.8.toFixed(1))); // 980
+    </script>
+</body>
+</html>

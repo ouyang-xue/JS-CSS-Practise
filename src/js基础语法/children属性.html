@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="content">
+        <ul id="ul">
+            <li class="li">标签0</li>
+            <li class="li">标签1</li>
+            <li class="li">标签2</li>
+            <li class="li">标签3</li>
+            <li class="li">标签4</li>
+            <li class="li">标签5</li>
+        </ul>
+    </div>
+    <script>
+        var ul = document.getElementById('ul');
+        const li = ul.lastElementChild; // document.getElementsByClassName('li')[2];
+
+        // 自己封装hasChildren()方法，不可用children属性，在原型上编程
+        Element.prototype.hasChildren = function () {
+            if (this.hasChildNodes()) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        // console.log(li1.hasChildren());
+
+        Element.prototype.hasChildren1 = function () {
+            var child = this.childNodes;
+            var arr = [];
+            for (var i = 0; i < child.length; i++) {
+                if (child[i].nodeType == 1) {
+                    arr.push(child[i]);
+                }
+            }
+            return arr;
+        };
+        // console.log(ul.hasChildren1());
+
+        // 封装函数，返回元素e的第n个兄弟节点；n>0时返回后面的兄弟节点，n<0时返回前面的兄弟节点，n=0时返回自己
+        Element.prototype.getBroNodes = function (n) {
+            let temp = this;
+            while(n) {
+                console.log('n==' + n);
+                if (n > 0) {
+                    temp = temp.nextElementSibling || temp.nextSibling;
+                    n--;
+                } else {
+                    temp = temp.previousElementSibling || temp.previousSibling;
+                    n++;
+                }
+            }
+            return temp;
+        };
+
+        // console.log(li.getBroNodes(2));
+        // console.log(li.getBroNodes(0));
+        // console.log(li.getBroNodes(-2));
+
+        // 实现一个insertAfter()，功能类似insertBefore()。
+        // 思路：如果后面有节点，就对后面那个节点执行insertBefore()，如果是最后一个节点，就执行appendChild()。
+        function insertAfter(parentNode, newEle, existedEle) {
+            var nextEle = existedEle.nextElementSibling || existedEle.nextSibling;
+            if (existedEle && nextEle) {
+                parentNode.insertBefore(newEle, nextEle);
+            } else {
+                parentNode.appendChild(newEle);
+            }
+        }
+        const image = document.createElement('img');
+        image.src = '../image/111.jpg';
+        insertAfter(ul, image, li);
+    </script>
+</body>
+</html>

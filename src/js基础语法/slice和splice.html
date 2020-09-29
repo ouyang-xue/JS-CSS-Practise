@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // slice
+        var arr = ['a', 'b', 'c', 'd', 'e'];
+        console.log(arr.slice()); // a b c d e  当没有传参数给slice方法时, 则返回从索引0开始拷贝的新数组.
+        console.log(arr.slice(2)); // c d e  传入一个参数表示从索引为该值的位置开始拷贝, 一直到原数组的最后一个元素.
+        console.log(arr.slice(2, 4)); // c d  包前不包后
+        console.log(arr.slice(-4, -2)); // b c  参数如果为负数, 表示从数组最后面的元素可以算起.
+        console.log('arr.slice(-4)==' + arr.slice(-4)); // b c d e
+
+        // splice
+        // 删除
+        var arr1 = ['a', 'b', 'c', 'd', 'e'];
+        var temp = arr1.splice(2); // 从下标为该参数处删除后面所有值
+        console.log(arr1); // a b
+        console.log(temp); // c d e
+        arr1 = ['a', 'b', 'c', 'd', 'e'];
+        var temp1 = arr1.splice(2, 2); // 从索引为2处开始，删除后面2个值
+        console.log(arr1); // a b e
+        console.log(temp1); // c d
+        // 插入
+        arr1 = ['a', 'b', 'c', 'd', 'e'];
+        // 0表示不删除，从索引2处添加后面的参数
+        var temp2 = arr1.splice(2, 0, 'x', 'y', 'z');
+        console.log(arr1);  // a b x y z c d e
+        console.log(temp2); // [] 没有删除的元素
+        // 替换
+        arr1 = ['a', 'b', 'c', 'd', 'e'];
+        // 从索引2开始删除2个，再从2处添加后面的参数
+        var temp3 = arr1.splice(2, 2, 'x', 'y', 'z');
+        console.log(arr1); // a b x y z e
+        console.log(temp3); // c d
+
+        var obj = {
+            name: '小a'
+        };
+        obj.age = 20;
+        console.log(obj.age); // 20
+        delete obj.name;
+        console.log(obj);  // {age: 20}
+
+        for(var i=1;i<=3;i++){
+            setTimeout(function(){
+                console.log(i);
+            }, 0);
+        }
+    </script>
+</body>
+</html>

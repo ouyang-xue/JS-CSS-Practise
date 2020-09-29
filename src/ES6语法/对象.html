@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+</head>
+<body>
+    <script>
+        let obj1 = {age: 10};
+        // let obj2 = {};
+        let obj2 = {
+            __proto__: obj1
+        };
+        Object.setPrototypeOf(obj2, obj1);  // 原理就是obj2.__proto__ = obj1;
+        obj2.__proto__ = obj1;
+        // 以上三种方式作用相同
+        // console.log(obj2);  // {}
+        // console.log(obj2.age);  // 10
+
+        // Object.create的实现原理如下: 这样创建出来的新对象只继承了原型属性
+        Object.create = function (parentPrototype) {
+            function Fn() {}
+            Fn.prototype = parentPrototype;
+            return new Fn(); // 它的原型链__proto__指向了parentPrototype
+        };
+
+        // 每个函数上都会有prototype属性，它是一个指针，指向一个对象
+        // __proto__是除null以外的每个对象上都支持的属性，它能够指向该对象的原型
+        function Foo() {
+        }
+        let f1 = new Foo();
+        console.log(f1.__proto__ === Foo.prototype);
+        console.log(f1.__proto__.__proto__ === Object.prototype);
+        console.log(Foo.prototype);
+        // console.log(obj1);
+        // console.log(obj1.__proto__ === Object.prototype); // true
+    </script>
+</body>
+</html>

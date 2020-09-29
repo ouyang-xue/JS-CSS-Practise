@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="../../node_modules/vue/dist/vue.min.js"></script>
+    <script type="text/javascript">
+        var App = {
+            data() {
+                return {
+                    price: 10,
+                    msg: 'filter test'
+                }
+            },
+            template: `
+                <div>
+                   <input type="number" v-model="price">
+                   <h2>{{ price | filterPrice(msg)}}</h2>
+                </div>
+            `,
+            filters: {
+                filterPrice: function (val, arg) {
+                    return '$' + val + ': ' + arg;
+                }
+            }
+        };
+
+        new Vue({
+            el: '#app',
+            data() {
+                return {}
+            },
+            components: {
+                App
+            },
+            template: '<App/>'
+        });
+    </script>
+</body>
+</html>

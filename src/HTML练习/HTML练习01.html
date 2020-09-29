@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    响应式布局-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: 'monospace';
+        }
+        #div1 {
+            height: 100px;
+            /*background: linear-gradient(to left, red, yellow);*/
+            /*background: linear-gradient(0deg, red, yellow);*/
+            background: linear-gradient(45deg, red 0, yellow 50%, paleturquoise 80%, green 100%);
+        }
+
+        #background {
+            height: 50px;
+            background: linear-gradient(45deg, transparent 0, transparent 49%, green 49%, green 50%, transparent 50%, transparent 100%);
+                        /*linear-gradient(135deg, transparent 0, transparent 49%, red 49%, red 50%, transparent 50%, transparent 100%);*/
+            background-size: 50px 50px;
+            margin: 20px;
+        }
+
+        #wavy-line {
+            height: 50px;
+            margin: 20px;
+        }
+
+        #wavy-line::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+
+            background: linear-gradient(135deg, transparent 0, transparent 45%, #008000, transparent 55%, transparent 100%),
+                        linear-gradient(45deg, transparent 0, transparent 45%, #008000, transparent 55%, transparent 100%);
+            background-size: 10px 10px;
+            background-repeat: repeat-x;
+        }
+
+        #border {
+            height: 100px;
+            width: 100px;
+            border: 30px solid transparent;
+            border-image: url("../image/111.jpg") round;
+        }
+
+        #clear-float {
+            background-color: red;
+            padding: 20px;
+            /*overflow: hidden;*/
+        }
+
+        #sub-clear {
+            float: left;
+            height: 50px;
+            width: 50px;
+            background-color: green;
+        }
+
+        #addTagToCLearFloat {
+            clear: both;
+        }
+
+        #triangle {
+            /*width: 0;*/
+            width: 50px;
+            height: 50px;
+            border-bottom: 20px solid red;
+            border-left: 20px solid green;
+            border-right: 20px solid green;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <p>你好 hello</p>
+        <aside>bbbbbbbbbbb </aside>
+    </section>
+    <div id="div1"></div>
+    <div id="background"></div>
+    <div id="wavy-line"></div>
+    <div id="clear-float">
+        <div id="sub-clear"></div>
+        <div id="addTagToCLearFloat"></div>
+    </div>
+    <div id="border"></div>
+    <div id="triangle"></div>
+</body>
+</html>

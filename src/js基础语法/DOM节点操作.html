@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            background-color: antiquewhite;
+            cursor: pointer;
+        }
+        .test2 {
+            width: 300px;
+            height: 50px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="test1">
+        <!--<span id="first">第一个元素</span>
+        <button class="btn">按钮</button>
+        <p>
+            <a href="#">链接</a>
+        </p>-->
+        <div class="test2">最后一个元素</div>
+    </div>
+    <script id="nodeType" type="text/html">
+        /** nodeType：
+         *  1 -- 代表元素Element；2 -- 代表属性Attr； 3 -- 代表元素或属性中的文本内容Text
+         *  4 -- 代表注释Comment； 5 -- 代表整个文档（DOM树的根节点）Document
+         */
+        // window.onload 在整个页面加载完成之后再加载该方法
+        window.onload = function () {
+            const box = document.getElementById('box');
+            const allNodes = box.childNodes;
+            let newArr = [];
+            allNodes.forEach((value, key, node) => {
+                if (value.nodeType === 1) {
+                    newArr.push(value);
+                }
+            });
+            console.log(newArr);
+        }
+    </script>
+    <script id="addNode" type="text/html">
+        window.onload = function () {
+            const box = document.getElementById('box');
+
+            // 1. 添加节点
+            const image = document.createElement('img');
+            image.src = '../image/111.jpg';
+            box.appendChild(image); // 将元素添加在最后面
+            // 将元素添加在指定元素之前
+            const btn = document.getElementsByClassName('btn')[0];
+            // box.insertBefore(image, btn);
+
+            // 2. 删除节点
+            // image.remove();
+            box.removeChild(image);
+
+            // 3. 克隆节点（不能克隆含有id的标签，因为id不能重复）
+            // const newBox = box.cloneNode(); // 浅克隆
+            const newBox = box.cloneNode(true); // 深克隆
+            // 将克隆出来的节点追加到dom上
+            document.body.appendChild(newBox);
+        }
+
+    </script>
+    <script>
+        // 2先输出
+        window.onload = function () {
+            document.querySelector('.test1').addEventListener('click', function() {
+                console.log(1);
+            });
+            document.querySelector('.test2').addEventListener('click', function() {
+                console.log(2);
+            });
+        }
+    </script>
+</body>
+</html>

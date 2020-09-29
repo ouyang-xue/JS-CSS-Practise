@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #box {
+            width: 500px;
+            height: 500px;
+            background-color: red;
+            margin: 100px;
+            position: relative;
+        }
+
+        #coordinate {
+            left: 0;
+            top: 0;
+            position: absolute;
+            display: none;
+        }
+
+        #list {
+            position: relative;
+            padding-top: 50px;
+        }
+
+        li {
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span id="coordinate"></span>
+        <div id="list">
+            <ul>
+                <li>标签1</li>
+                <li>标签2</li>
+                <li>标签3</li>
+                <li>标签4</li>
+                <li>标签5</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+            const box = document.getElementById('box');
+            const coordinate = document.getElementById('coordinate');
+            box.addEventListener('mouseover', function () {
+                coordinate.style.display = 'block';
+                box.addEventListener('mousemove', function (e) {
+                    const x = e.pageX - box.offsetLeft;
+                    const y = e.pageY - box.offsetTop;
+                    coordinate.innerText = `(${x}, ${y})`;
+                    coordinate.style.left = x + 'px';
+                    coordinate.style.top = y + 'px';
+                });
+            });
+            box.addEventListener('mouseout', function () {
+                coordinate.style.display = 'none';
+            });
+
+            // 遍历多个li时，ES5会直接输出最后一项，所以要使用闭包处理，但ES6可以直接遍历并操作
+            const liList = document.getElementById('list').getElementsByTagName('li');
+            for (let i = 0; i < liList.length; i++) {
+                console.log(i); // 0 1 2 3 4
+                liList[i].addEventListener('click', function () {
+                    alert(i);
+                });
+            }
+        });
+
+    </script>
+</body>
+</html>

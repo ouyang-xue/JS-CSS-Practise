@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        console.log(document.compatMode);
+        window.onscroll = function () {
+            /*
+                window.pageYOffset 适用于新版本浏览器
+                document.documentElement.scrollTop 适用于严格模式（遵循W3C标准，document.compatMode == 'CSS1Compat'）下的浏览器
+                document.body.scrollTop 适用于怪异模式（不遵循W3C标准，document.compatMode == 'BackCompat'）下的浏览器
+                用以下方法进行兼容性处理
+            */
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            console.log(scrollTop);
+        }
+    </script>
+</body>
+</html>

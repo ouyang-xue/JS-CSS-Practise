@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // 利用JS中基本类型的参数传递是按值传递的特征实现
+        var output = function (i) {
+            setTimeout(function () {
+                console.log(i);
+
+            }, 1000 * i)
+        };
+        for (let i = 0; i < 4; i++) {
+            output(i);
+        }
+
+        // 基于Promise的解决方案
+        const tasks = [];
+        const output1 = (i) => new Promise((resolve) => {
+            setTimeout(() => {
+                console.log(i);
+                resolve();
+            }, 1000 * i);
+
+        });
+
+        //生成全部的异步操作
+        for (var i = 0; i < 4; i++) {
+            tasks.push(output1(i));
+        }
+        //同步操作完成后，输出最后的i
+        Promise.all(tasks).then(() => {
+            setTimeout(() => {
+                console.log(i);
+            }, 1000)
+        });
+
+        // 使用ES7中的async await特性的解决方案（推荐）
+        const sleep = (timeoutMS) => new Promise((resolve) => {
+            setTimeout(resolve, timeoutMS);
+        });
+
+        (async () => { //声明即执行的async
+            for (var i = 0; i < 5; i++) {
+                await sleep(1000);
+                console.log(i);
+            }
+        })();
+
+        //
+        var output = function (i) {
+            setTimeout(function () {
+                console.log(i);
+
+            }, 1000 * i)
+        };
+        for (let i = 0; i < 4; i++) {
+            output(i);
+        }
+
+        //
+        for (let i = 0; i < 4; i++) {
+            (function (j) {
+                setTimeout(function () {
+                    console.log(j);
+                }, 1000 * i)
+            })(i);
+        }
+
+    </script>
+</body>
+</html>

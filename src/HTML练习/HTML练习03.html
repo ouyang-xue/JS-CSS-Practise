@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    响应式布局-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        #lose-height {
+            height: 100px;
+            width: 100px;
+            background-color: green;
+            outline: #00FF00 solid 2px;
+            position: relative;
+            overflow: hidden;
+            /*box-shadow:  10px 10px 5px #888888;*/
+            /*box-shadow: 0 -5px 0 0 #ff0000, !*上边阴影  红色*!
+                        0 5px 0 0 #eede15,    !*下边阴影  黄色*!
+                        -5px 0 0 0 #3bee17,   !*左边阴影  绿色*!
+                        5px 0 0 0 #2279ee;    !*右边阴影  蓝色*!*/
+        }
+        #lose-height:before{
+            display: table;
+            content: "";
+        }
+        #sub-height {
+            position: absolute;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            left: -25px;
+            /*top:0;  bottom: 0;  left: 0;  right: 0;  margin: auto;*/
+            /*top: 50%; left: 50%; transform: translate(-50%, -50%);*/
+            background-color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="lose-height">
+        <div id="sub-height"></div>
+    </div>
+</body>
+</html>
